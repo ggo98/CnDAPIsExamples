@@ -17,6 +17,19 @@ namespace D7ComAgentClientDOTNETClient
 	public partial class Form1 : Form
 	{
 		/// <summary>
+		/// local server
+		/// </summary>
+		private const string ComAgentIP = "127.0.0.1";
+		/// <summary>
+		/// default port
+		/// </summary>
+		private const int ComAgentPort = 12345;
+		/// <summary>
+		///  password to connect with the COM Agent
+		/// </summary>
+		private const string ComAgentPassword = "netreport";
+
+		/// <summary>
 		/// used by StringToXMLAttributeValue()
 		/// </summary>
 		private static XmlDocument _xmlDoc = new XmlDocument();
@@ -37,7 +50,7 @@ namespace D7ComAgentClientDOTNETClient
 				D7COMAGENTCLIENTLib.INRCOMClient clt = new D7COMAGENTCLIENTLib.NRCOMClient();
 				try
 				{
-					clt.Connect("127.0.0.1", 12345, "netreport");
+					clt.Connect(ComAgentIP, ComAgentPort, ComAgentPassword);
 					NRNELRFXLib.INRNelrfXO2 hlp = new NRNELRFXLib.NRNelrfXO();
 					hlp.type = "SomeFilter";
 					var now = DateTime.UtcNow;
